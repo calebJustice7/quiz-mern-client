@@ -1,0 +1,433 @@
+.groups-modal-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.groups-modal-wrapper .content {
+    background-color: white;
+    width: 700px;
+    height: 450px;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 15%;
+}
+
+.groups-modal-wrapper .header {
+    background-color: #00bbf2;
+    color: white;
+    display: flex;
+    padding: 15px 30px;
+    justify-content: space-between;
+    font-size: 1.4em;
+    margin-bottom: 40px;
+}
+
+.groups-modal-wrapper .header div:last-child {
+    cursor: pointer;
+}
+
+.groups-modal-wrapper .body {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.groups-modal-wrapper .body .user {
+    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.groups-modal-wrapper .body .user:hover button {
+    right: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+.groups-modal-wrapper .body .user span {
+    margin-right: 80px;
+}
+
+.groups-modal-wrapper .body .user button {
+    position: absolute;
+    right: -150px;
+    transition: 0.2s all;
+    top: 8px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    font-size: .95em;
+    background-color: #0883b8;
+}
+
+.groups-modal-wrapper .body .user .unadd {
+    background-color: rgb(255, 128, 128);
+}
+
+.groups-modal-wrapper .body .user button:hover {
+    background-color: #30D158;
+}
+
+.groups-modal-wrapper .body .user .unadd:hover {
+    background-color: red;
+}
+
+.groups-modal-wrapper .search-body {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+
+}
+
+.groups-modal-wrapper .search-body input {
+    font-size: .95em;
+    border-radius: 25px;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    background-color: #dce4f5;
+    width: 80%;
+}
+
+.groups-modal-wrapper .search-body i {
+    margin-left: -30px;
+    font-size: .95em;
+    border-radius: 25px;
+    padding: 12px 25px;
+    outline: none;
+    background-color: #00aaf1;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+
+.groups-wrapper {
+    width: 98%;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    margin-top: 1%;
+    height: calc(98% - 55px);
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.groups-wrapper .left, .groups-wrapper .right {
+    margin-left: 60px;
+    width: 95%;
+    height: 90%;
+    position: relative;
+}
+
+.groups-wrapper .right {
+    margin-right: 60px;
+}
+
+.groups-wrapper .header {
+    font-size: 2.1em;
+    color: white;
+    font-weight: 500;
+}
+
+.groups-wrapper .new-group-wrapper {
+    position: absolute;
+    bottom: 10px;
+}
+
+.groups-wrapper .new-group-wrapper input {
+    font-size: .95em;
+    background-color: #dadfea;
+    border-radius: 20px;
+    padding: 10px 15px;
+    outline: none;
+    width: 300px;
+    border:none;
+}
+.groups-wrapper .new-group-wrapper button {
+    margin-left: -33px;
+    font-size: .95em;
+    color: white;
+    border-radius: 20px;
+    padding: 10.5px 15px;
+    outline: none;
+    border: none;
+    background-color: #30D158;
+    cursor: pointer;
+}
+
+.groups-wrapper .groups {
+    margin-top: 75px;
+    max-height: 400px;
+    overflow: scroll;
+}
+
+.groups-wrapper .groups::-webkit-scrollbar {
+    display: none;
+}
+
+.groups-wrapper .groups .group {
+    background-color: white;
+    margin: 10px 0;
+    padding: 14px 0;
+    border-left: 20px solid #00aaf1;
+    position: relative;
+}
+
+.groups-wrapper .first-span {
+    margin-left: 30px;
+}
+.groups-wrapper .groups .hidden {
+    display: none;
+    padding-top: 30px;
+    width: 100%;
+}
+
+.groups-wrapper .group-hide-status {
+    margin-left: 70px;
+    background-color: #00aaf1;
+    color: white;
+    border-radius: 15px;
+    padding: 5px 10px;
+    position: absolute;
+    right: 30px;
+    top: 9px;
+}
+
+.groups-wrapper .groups .group span {
+    cursor: pointer;
+}
+
+.groups-wrapper .group-add-user {
+    background-color: #30D158;
+    position: absolute;
+    right: 160px;
+    top: 9px;
+    margin-left: 30px;
+    color: white;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+
+.groups-wrapper .left .hidden .content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.groups-wrapper .left .hidden h2 {
+    margin: 20px 0;
+}
+
+.groups-wrapper .left .hidden .left .users .user button {
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 15px;
+    background-color: red;
+    padding: 4px 8px;
+    cursor: pointer;
+    margin: 7px 0;
+}
+
+.groups-wrapper .left .hidden .left .users .user {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid black;
+    justify-content: space-between;
+}
+
+.groups-wrapper .fa-sync {
+    position: absolute;
+    top: 14px;
+    font-size: 1.3em;
+    color: #00bbf2;
+    cursor: pointer;
+    right: 270px;
+}
+
+.groups-wrapper .left .hidden .left {
+    margin: 0;
+}
+.groups-wrapper .left .fa-trash-alt {
+    position: absolute;
+    left: 5px;
+    font-size: 1.3em;
+    color: red;
+    cursor: pointer;
+}
+
+
+.groups-wrapper .left .content .right .quiz button {
+    margin-left: 10px;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 15px;
+    background-color: red;
+    padding: 4px 8px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+.groups-wrapper .left .content .right .quiz {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid black;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.groups-wrapper .left .confirm-delete-wrapper {
+    color: white;
+    margin-top: 70px;
+    width: 100%;
+    text-align: center;
+}
+
+.groups-wrapper .left .confirm-delete-wrapper .buttons-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+.groups-wrapper .left .confirm-delete-wrapper .buttons-wrapper button {
+    border-radius: 10px;
+    font-size: 1em;
+    background-color: #30D158;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 11px 25px;
+}
+
+.groups-wrapper .left .confirm-delete-wrapper .buttons-wrapper button:last-child {
+    background-color: red;
+}
+
+.groups-involved-wrapper h1{
+    color: white;
+}
+
+.groups-involved-wrapper .groups {
+    max-height: 900px;
+    overflow: scroll;
+}
+
+.groups-involved-wrapper .groups::-webkit-scrollbar {
+    display: none;
+}
+
+.groups-involved-wrapper .group {
+    align-items: center;
+    position: relative;
+}
+
+.groups-involved-wrapper .group p {
+    margin-left: 20px;
+    font-weight: 270;
+    display: inline;
+}
+.groups-involved-wrapper .group span {
+    font-weight: 740;
+    font-size: 1.12em;
+}
+
+.groups-involved-wrapper .group .toggle {
+    color: white;
+    background-color: #00aaf1;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.groups-involved-wrapper .group .hidden-gr {
+    display: none;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.groups-involved-wrapper .group .hidden-gr .content {
+    background-color: #d8e2f7;
+    width: 100%;
+    padding: 15px;
+}
+
+.groups-involved-wrapper .group .hidden-gr .content .header {
+    display: flex;
+    color: black;
+    justify-content: space-around;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.groups-involved-wrapper .group .hidden-gr .content .left {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.groups-involved-wrapper .group .hidden-gr .content .left .quiz {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    justify-content: space-between;
+}
+
+.groups-involved-wrapper .group .hidden-gr .content .right {
+    margin: 0 auto;
+    width: 40%;
+    text-align: center;
+}
+
+.groups-involved-wrapper .group .hidden-gr .content .left .quiz .button {
+    text-decoration: none;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #505050;
+    padding: 5px 10px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.groups-involved-wrapper .group .hidden-gr .content .header .inactive {
+    color: #9c9c9c;
+    border-bottom: 2px solid #9c9c9c;
+}
+
+.groups-involved-wrapper .group .hidden-gr .content .header div {
+    cursor: pointer;
+    border-bottom: 2px solid black;
+    padding: 2px 5px;
+}
+
+.groups-involved-wrapper .group .hidden-gr .content h1 {
+    font-weight: 500;
+    color: black;
+    margin-bottom: 8px;
+    margin-left: -15px;
+}
