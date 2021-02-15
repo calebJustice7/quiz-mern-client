@@ -36,7 +36,8 @@ class SignIn extends React.Component {
             setTimeout(() => { this.setState({ message: '' }) }, 2000);
             return;
         }
-        axios.post('http://localhost:9000/users/login', this.state).then(res => {
+        // http://localhost:9000
+        axios.post('/users/login', this.state).then(res => {
             if (res.data.message === 'Signed in successfully!') {
                 this.setState({ email: '', password: '' });
                 auth('save', res);

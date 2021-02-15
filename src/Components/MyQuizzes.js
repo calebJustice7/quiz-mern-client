@@ -82,7 +82,8 @@ export default class CreateQuiz extends React.Component {
         let userId = auth('get').user._id;
         let body = {_id: userId}
         if(!auth('auth')) return;
-        axios.post('http://localhost:9000/quiz/get-users-quizzes', body).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/get-users-quizzes', body).then(res => {
             if(res.data.message === 'success') {
                 this.setState({
                     stats: getQuizStats(res.data.data),
@@ -105,7 +106,8 @@ export default class CreateQuiz extends React.Component {
 
     getMyGroups = () => {
         if (!auth('get')) return;
-        axios.post('http://localhost:9000/quiz/my-groups', { _id: auth('get').user._id }).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/my-groups', { _id: auth('get').user._id }).then(res => {
             if (res.data.message === 'success') {
                 this.setState({
                     groups: res.data.data
@@ -115,7 +117,8 @@ export default class CreateQuiz extends React.Component {
     }
 
     shareQuiz = (group) => {
-        axios.post('http://localhost:9000/quiz/share-quiz', {groupId: group._id, quizId: this.state.selectedQuiz._id}).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/share-quiz', {groupId: group._id, quizId: this.state.selectedQuiz._id}).then(res => {
             if(res.data.message === 'success') {
                 this.getMyGroups();
             }
@@ -123,7 +126,8 @@ export default class CreateQuiz extends React.Component {
     }
 
     unShare = (group, idx) => {
-        axios.post('http://localhost:9000/quiz/unshare-quiz', {groupId: group._id, quizId: this.state.selectedQuiz._id}).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/unshare-quiz', {groupId: group._id, quizId: this.state.selectedQuiz._id}).then(res => {
             if(res.data.message === 'success') {
                 this.getMyGroups();
             }

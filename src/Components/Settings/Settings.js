@@ -40,7 +40,8 @@ export default class Settings extends React.Component {
     uploadImage = (base64EncodedImage) => {
         if (!auth("get")) return;
 
-        axios.post('http://localhost:9000/users/upload-image', JSON.stringify({
+        // http://localhost:9000
+        axios.post('/users/upload-image', JSON.stringify({
             data: base64EncodedImage, _id: auth('get').user._id
         }), {
             headers: {

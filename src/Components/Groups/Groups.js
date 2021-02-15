@@ -36,7 +36,7 @@ export default class Groups extends React.Component {
 
     getUsers = () => {
         if (!auth('auth')) return;
-        axios.post('http://localhost:9000/users/get-all-users', { email: auth('get').user.email }).then(res => {
+        axios.post('/users/get-all-users', { email: auth('get').user.email }).then(res => {
             if (res.data.message === 'success') {
                 this.setState({ usersToDisplay: res.data.data, users: res.data.data })
             }
@@ -45,7 +45,7 @@ export default class Groups extends React.Component {
 
     getMyGroups = (getUsers, idx) => {
         if (!auth('get')) return;
-        axios.post('http://localhost:9000/quiz/my-groups', { _id: auth('get').user._id }).then(res => {
+        axios.post('/quiz/my-groups', { _id: auth('get').user._id }).then(res => {
             if (res.data.message === 'success') {
                 this.setState({
                     myGroups: res.data.data
@@ -65,7 +65,8 @@ export default class Groups extends React.Component {
     getMyUsers = async (idx) => {
         let users = this.state.myGroups[idx];
         this.setState({ groupUsers: [] });
-        axios.post('http://localhost:9000/users/get-users', { ids: users.users }).then(res => {
+        // 11 Different http://localhost:9000
+        axios.post('/users/get-users', { ids: users.users }).then(res => {
             if (res.data.message === 'success') {
                 this.setState({
                     groupUsers: res.data.data
@@ -77,7 +78,7 @@ export default class Groups extends React.Component {
     getMyQuizzes = (idx) => {
         let quizzes = this.state.myGroups[idx].quizzes;
         this.setState({groupQuizzes: []});
-        axios.post('http://localhost:9000/quiz/get-quizzes', { ids: quizzes }).then(res => {
+        axios.post('/quiz/get-quizzes', { ids: quizzes }).then(res => {
             if (res.data.message === 'success') {
                 this.setState({ groupQuizzes: res.data.data })
             }
@@ -85,7 +86,7 @@ export default class Groups extends React.Component {
     }
 
     showModal = (id) => {
-        axios.post('http://localhost:9000/quiz/get-group', { _id: id._id }).then(res => {
+        axios.post('/quiz/get-group', { _id: id._id }).then(res => {
             if (res.data.message === 'success') {
                 this.setState({ group: res.data.data })
             }
@@ -100,7 +101,7 @@ export default class Groups extends React.Component {
             if (group.name === this.state.inputVal) returnVal = true;
         })
         if (returnVal) return;
-        axios.post('http://localhost:9000/quiz/new-group', {
+        axios.post('/quiz/new-group', {
             createdById: auth('get').user._id,
             createdByName: auth('get').user.firstName + ' ' + auth('get').user.lastName,
             name: this.state.inputVal
@@ -131,7 +132,7 @@ export default class Groups extends React.Component {
 
     addToGroup = (user) => {
         if (this.state.group.users.includes(user)) return;
-        axios.post('http://localhost:9000/quiz/add-user-to-group', { _id: user, groupId: this.state.group._id }).then(res => {
+        axios.post('/quiz/add-user-to-group', { _id: user, groupId: this.state.group._id }).then(res => {
             if (res.data.message === 'success') {
                 this.setState({ group: res.data.data });
             }
@@ -139,7 +140,7 @@ export default class Groups extends React.Component {
     }
 
     unAdd = (user, group) => {
-        axios.post('http://localhost:9000/quiz/unadd-from-group', { _id: user._id, groupId: group }).then(res => {
+        axios.post('/quiz/unadd-from-group', { _id: user._id, groupId: group }).then(res => {
             if (res.data.message === 'success') {
                 this.setState({
                     group: res.data.data,
@@ -157,7 +158,7 @@ export default class Groups extends React.Component {
 
     deleteGroup = () => {
         if(this.state.inputValDelete !== this.state.groupToDelete.name) return;
-        axios.post('http://localhost:9000/quiz/delete-group', {_id: this.state.groupToDelete._id}).then(res => {
+        axios.post('/quiz/delete-group', {_id: this.state.groupToDelete._id}).then(res => {
             this.setState({inputValDelete: ''});
             if(res.data.message === 'success') {
                 this.getMyGroups();
@@ -167,7 +168,7 @@ export default class Groups extends React.Component {
     }
 
     removeQuiz = (quiz, group) => {
-        axios.post('http://localhost:9000/quiz/unadd-quiz-from-group', { _id: quiz._id, groupId: group._id }).then(res => {
+        axios.post('/quiz/unadd-quiz-from-group', { _id: quiz._id, groupId: group._id }).then(res => {
             if (res.data.message === 'success') {
                 console.log(res.data.data);
                 this.setState({
@@ -182,7 +183,7 @@ export default class Groups extends React.Component {
 
     searchForUsers = () => {
         if(!auth('get')) return;
-        axios.post('http://localhost:9000/users/search-for-users', {name: this.state.inputValUsers, email: auth('get').user.email}).then(res => {
+        axios.post('/users/search-for-users', {name: this.state.inputValUsers, email: auth('get').user.email}).then(res => {
             if(res.data.message === 'success') {
                 console.log(res.data.data);
                 this.setState({usersToDisplay: res.data.data})

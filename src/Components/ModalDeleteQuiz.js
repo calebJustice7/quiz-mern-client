@@ -34,7 +34,8 @@ export default class ModalDeleteQuiz extends React.Component {
     }
 
     deleteQuizEnd = () => {
-        axios.post('http://localhost:9000/quiz/delete-quiz', {_id: this.props.quiz._id, createdById: auth('get').user._id}, {
+        // http://localhost:9000
+        axios.post('/quiz/delete-quiz', {_id: this.props.quiz._id, createdById: auth('get').user._id}, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth('get').token
@@ -52,7 +53,8 @@ export default class ModalDeleteQuiz extends React.Component {
 
     deleteQuiz = () => {
         if (!auth('get')) return;
-        axios.post('http://localhost:9000/quiz/my-groups', { _id: auth('get').user._id }).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/my-groups', { _id: auth('get').user._id }).then(res => {
             if (res.data.message === 'success') {
                 this.searchGroups(res.data.data)
             }

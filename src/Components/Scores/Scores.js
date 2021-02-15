@@ -16,7 +16,8 @@ export default class Scores extends React.Component {
     }
 
     componentDidMount() {
-        axios.post(`http://localhost:9000/quiz/get-quiz`, { _id: this.props.match.params.id }).then(res => {
+        // http://localhost:9000
+        axios.post(`/quiz/get-quiz`, { _id: this.props.match.params.id }).then(res => {
             if (res.data.message === 'success') {
                 this.setState({ quiz: res.data.data });
                 this.checkAuth();

@@ -80,7 +80,8 @@ export default class EditQuiz extends React.Component {
         let userId = auth('get').user._id;
         let body = { _id: userId }
         if (!auth('auth')) return;
-        axios.post('http://localhost:9000/quiz/get-users-quizzes', body).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/get-users-quizzes', body).then(res => {
             if (res.data.message === 'success') {
                 store.dispatch({
                     type: 'SET_USER_QUIZZES',
@@ -104,7 +105,8 @@ export default class EditQuiz extends React.Component {
     formSubmit = (e) => {
         e.preventDefault();
         if (this.state.answers.length < 2 || !this.state.question || !this.state.correctAnswer || !store.getState().quizReducer.selectedQuizEdit) return;
-        axios.post('http://localhost:9000/quiz/add-question', {
+        // http://localhost:9000
+        axios.post('/quiz/add-question', {
             questionName: this.state.question,
             answers: this.state.answers,
             correctAnswer: this.state.correctAnswer,
@@ -128,7 +130,8 @@ export default class EditQuiz extends React.Component {
     }
 
     changePublicity = (quiz, idx) => {
-        axios.post('http://localhost:9000/quiz/change-publicity', { publicity: quiz.makePrivate, _id: quiz._id }).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/change-publicity', { publicity: quiz.makePrivate, _id: quiz._id }).then(res => {
             if (res.data.message === 'success') {
                 store.dispatch({
                     type: 'CHANGE_PUBLICITY',
@@ -147,7 +150,8 @@ export default class EditQuiz extends React.Component {
 
     deleteQuestion = (ques) => {
         let quiz = store.getState().quizReducer.selectedQuizEdit;
-        axios.post('http://localhost:9000/quiz/delete-question', {_id: quiz._id, question: ques}).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/delete-question', {_id: quiz._id, question: ques}).then(res => {
             if(res.data.message === 'success') {
                 store.dispatch({
                     type: "SELECT_QUIZ_EDIT",

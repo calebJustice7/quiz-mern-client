@@ -65,7 +65,8 @@ export default class NewQuizModal extends React.Component {
             this.setState({message: 'not signed in'});
             return;
         }
-        axios.post('http://localhost:9000/quiz/create-quiz', JSON.stringify({
+        // http://localhost:9000
+        axios.post('/quiz/create-quiz', JSON.stringify({
             name: `${auth('get').user.firstName} ${auth('get').user.lastName}`,
             _id: auth('get').user._id,
             quizName: this.state.quizName,
@@ -101,7 +102,8 @@ export default class NewQuizModal extends React.Component {
         let userId = auth('get').user._id;
         let body = {_id: userId}
         if(!auth('auth')) return;
-        axios.post('http://localhost:9000/quiz/get-users-quizzes', body).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/get-users-quizzes', body).then(res => {
             if(res.data.message === 'success') {
                 store.dispatch({
                     type: 'SET_USER_QUIZZES',

@@ -23,7 +23,8 @@ export default class GroupsInvolvedIn extends React.Component {
 
     getGroups = () => {
         if(!auth('get')) return;
-        axios.post('http://localhost:9000/quiz/get-involved-quizzes', {_id: auth('get').user._id}).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/get-involved-quizzes', {_id: auth('get').user._id}).then(res => {
             if(res.data.message === 'success') {
                 this.setState({groups: res.data.data})
             }
@@ -32,7 +33,8 @@ export default class GroupsInvolvedIn extends React.Component {
 
     getQuizzes = (idx) => {
         let idsArr = this.state.groups[idx].quizzes;
-        axios.post('http://localhost:9000/quiz/get-quizzes', {ids: idsArr}).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/get-quizzes', {ids: idsArr}).then(res => {
             if(res.data.message === 'success') {
                 this.setState({
                     quizzes: res.data.data
@@ -43,7 +45,8 @@ export default class GroupsInvolvedIn extends React.Component {
 
     getUsers = (idx) => {
         let idsArr = this.state.groups[idx].users;
-        axios.post('http://localhost:9000/users/get-users', {ids: idsArr}).then(res => {
+        // http://localhost:9000
+        axios.post('/users/get-users', {ids: idsArr}).then(res => {
             if(res.data.message === 'success') {
                 this.setState({
                     users: res.data.data

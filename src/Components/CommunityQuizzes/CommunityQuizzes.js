@@ -25,7 +25,8 @@ class CommunityQuizzes extends React.Component {
 
     componentDidMount() {
         this.unsubscribe = store.subscribe(() => this.forceUpdate());
-        axios.post('http://localhost:9000/quiz/get-all-quizzes').then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/get-all-quizzes').then(res => {
             this.setState({ quizzes: res.data, quizzesToDisplay: res.data })
         })
     }
@@ -36,7 +37,8 @@ class CommunityQuizzes extends React.Component {
 
     likeQuiz = (id, idx) => {
         if (store.getState().userReducer.user.likedQuizzes.includes(id)) return;
-        axios.post('http://localhost:9000/quiz/like-quiz', {
+        // http://localhost:9000
+        axios.post('/quiz/like-quiz', {
             quizId: id,
             userId: auth('get').user._id
         }).then(res => {
@@ -59,7 +61,8 @@ class CommunityQuizzes extends React.Component {
 
     unLike(id, idx) {
         if (store.getState().userReducer.user.likedQuizzes.includes(id) && auth('get')) {
-            axios.post('http://localhost:9000/quiz/unlike', { userId: auth('get').user._id, quizId: id }).then(res => {
+            // http://localhost:9000
+            axios.post('/quiz/unlike', { userId: auth('get').user._id, quizId: id }).then(res => {
                 if (res.data.message === 'success') {
                     let quizzes = this.state.quizzes;
                     quizzes[idx].likes--;
@@ -112,7 +115,8 @@ class CommunityQuizzes extends React.Component {
     }
 
     searchForQuizzes = () => {
-        axios.post('http://localhost:9000/quiz/search-for-quizzes', {quizName: this.state.inputVal}).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/search-for-quizzes', {quizName: this.state.inputVal}).then(res => {
             if(res.data.message === 'success') {
                 this.setState({quizzesToDisplay: res.data.data});
             }

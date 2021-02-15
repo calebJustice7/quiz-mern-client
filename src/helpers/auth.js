@@ -21,7 +21,8 @@ export default function auth(type, data) {
     } else if(type === 'load') {
         let user = localStorage.getItem('user') === null ? false : JSON.parse(localStorage.getItem('user'));
         if(!user) return;
-        axios.post('http://localhost:9000/users/get-user', {_id: user.user._id}).then(res => {
+        // http://localhost:9000
+        axios.post('/users/get-user', {_id: user.user._id}).then(res => {
             if(res.data.message === 'success'){
                 let storage = JSON.parse(localStorage.getItem('user'));
                 storage.user = res.data.data;

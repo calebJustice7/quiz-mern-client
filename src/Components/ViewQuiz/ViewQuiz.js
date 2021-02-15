@@ -17,7 +17,8 @@ export default class ViewQuiz extends React.Component {
     }
 
     componentDidMount(){
-        axios.post(`http://localhost:9000/quiz/get-quiz`, {_id: this.props.match.params.id}).then(res => {
+        // http://localhost:9000
+        axios.post(`/quiz/get-quiz`, {_id: this.props.match.params.id}).then(res => {
             if(res.data.message === 'success') {
                 this.setState({quiz: res.data.data});
                 res.data.data.makePrivate ? this.getGroups() : this.checkAuth(res.data.data);
@@ -34,7 +35,8 @@ export default class ViewQuiz extends React.Component {
             this.setState({isAuthorized: true});
             return;
         }
-        axios.post('http://localhost:9000/quiz/get-involved-quizzes', {_id: auth('get').user._id}).then(res => {
+        // http://localhost:9000
+        axios.post('/quiz/get-involved-quizzes', {_id: auth('get').user._id}).then(res => {
             if(res.data.message === 'success') {
                 res.data.data.forEach(group => {
                     if(group.quizzes.includes(this.props.match.params.id)) {
@@ -59,7 +61,8 @@ export default class ViewQuiz extends React.Component {
     addComment = () => {
         if(!auth('get')) return;
         if(this.state.inputVal.length < 2) return;
-        axios.post('http://localhost:9000/quiz/add-comment', {
+        // http://localhost:9000
+        axios.post('/quiz/add-comment', {
             sentFromId: auth('get').user._id,
             sentFromName: auth('get').user.firstName + ' ' + auth('get').user.lastName,
             sentFromPicture: auth('get').user.profilePicture,

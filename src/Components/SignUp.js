@@ -30,7 +30,8 @@ export default class SignUp extends React.Component {
             setTimeout(() => {this.setState({message: ''})}, 2000)
             return;
         }
-        axios.post('http://localhost:9000/users/register', this.state).then(res => {
+        // http://localhost:9000
+        axios.post('/users/register', this.state).then(res => {
             this.setState({message: res.data.message})
             if(res.data.message) {
                 this.setState({
